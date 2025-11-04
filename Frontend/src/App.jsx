@@ -7,6 +7,7 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import Dashboard from './components/Home/Dashboard'
 import {Toaster} from "react-hot-toast"
 import Employees from './components/Home/Employees'
+import Admins from './components/Home/Admins'
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
      }>
       <Route index element={<Dashboard/>}/>
       <Route path="assets" element={<h1> Assets </h1>}></Route>
-       <Route path="admins" element={<h1> Admins </h1>}></Route>
+       <Route path="admins" element={<Admins/>}></Route>
         <Route path="myAssets" element={<h1> MyAsset </h1>}></Route>
           <Route path="requests" element={<h1> Requests </h1>}></Route>
              <Route path="profile" element={<h1> Profile </h1>}></Route>

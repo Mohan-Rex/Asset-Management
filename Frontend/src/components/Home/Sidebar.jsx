@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 
 
@@ -38,24 +38,24 @@ function Sidebar() {
         {/* Navigation Links */}
         <div className="flex flex-col py-4 px-2 w-4/5 justify-center gap-8">
           {
-            links.map(myLink => {
-              return <Link to={myLink.path} key={myLink.label} className="shadow-md shadow-gray-600 h-10 rounded-2xl text-center 
-            content-center text-xl font-semibold w-full cursor-pointer 
-            hover:bg-gray-200">{myLink.label}</Link>
-            })
+            links.map(myLink => (
+               <NavLink to={myLink.path} key={myLink.label} className={({isActive})=>
+                `shadow-md shadow-gray-600 h-10 rounded-2xl text-center text-2xl font-semibold cursor-pointer ${isActive ? "bg-blue-500" : "hover:bg-blue-200"}`
+              }>{myLink.label}</NavLink>
+            ))
           }
         </div>
 
         {/* Bottom Section */}
         <div className="flex flex-col py-4 px-2 w-4/5 flex-1 justify-end items-center gap-4">
-          <Link
+          <NavLink
             to={"/profile"}
             className="shadow-md shadow-gray-600 h-10 rounded-2xl text-center 
             content-center text-xl font-semibold w-full cursor-pointer 
             hover:bg-gray-200"
           >
             Profile
-          </Link>
+          </NavLink>
 
           <button
             className="bg-red-500 rounded-2xl h-10 w-1/2 text-xl font-semibold 

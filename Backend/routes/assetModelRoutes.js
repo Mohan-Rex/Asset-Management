@@ -1,6 +1,6 @@
 import express from "express"
 import { verifyUser } from "../middlewares/verifyUser.js"
-import { addAssetModel } from "../controllers/assetModelController.js"
+import { addAssetModel, deleteAssetModel, editAssetModel } from "../controllers/assetModelController.js"
 import { checkRole } from "../middlewares/checkRole.js"
 
 const assetModelRouter=express.Router()
@@ -8,5 +8,10 @@ const assetModelRouter=express.Router()
 assetModelRouter.get("/",(req,res)=>res.send({message:"asset router is working"}))
 
 assetModelRouter.post('/add',verifyUser,checkRole(["admin","super admin"]),addAssetModel)
+
+assetModelRouter.put('/edit',verifyUser,checkRole(["admin","super admin"]),editAssetModel)
+
+assetModelRouter.delete('/delete',verifyUser,checkRole(["admin","super admin"]),deleteAssetModel)
+
 
 export default assetModelRouter 
