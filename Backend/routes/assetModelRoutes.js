@@ -8,8 +8,8 @@ const assetModelRouter=express.Router()
 assetModelRouter.get("/",(req,res)=>res.send({message:"asset router is working"}))
 
 assetModelRouter.post('/add',verifyUser,checkRole(["admin","super admin"]),addAssetModel)
-
-assetModelRouter.put('/edit',verifyUser,checkRole(["admin","super admin"]),editAssetModel)
+//update(params)
+assetModelRouter.put('/edit/:id',verifyUser,checkRole(["admin","super admin"]),editAssetModel)
 
 assetModelRouter.delete('/delete',verifyUser,checkRole(["admin","super admin"]),deleteAssetModel)
 
