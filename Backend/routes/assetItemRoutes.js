@@ -1,7 +1,7 @@
 import express from 'express'
 import { verifyUser } from '../middlewares/verifyUser.js'
 import { checkRole } from '../middlewares/checkRole.js'
-import { addAssetItem, deleteAssetItem, editAssetItem } from '../controllers/assetItemController.js'
+import { addAssetItem, deleteAssetItem, editAssetItem, getAllAssetItems } from '../controllers/assetItemController.js'
 
 
 const assetItemRouter = express.Router()
@@ -13,6 +13,8 @@ assetItemRouter.post("/add",verifyUser,checkRole(["super admin", "admin"]),addAs
 assetItemRouter.put("/edit",verifyUser,checkRole(["super admin", "admin"]),editAssetItem)
 
 assetItemRouter.delete("/delete",verifyUser,checkRole(["super admin", "admin"]),deleteAssetItem)
+
+assetItemRouter.get("/allassetitems",verifyUser,checkRole(["super admin", "admin"]),getAllAssetItems)
 
 
 

@@ -69,3 +69,23 @@ export const deleteAssetItem = async (req, res) => {
         })
     }
 }
+// Get All Assets
+export const getAllAssetItems = async (req, res) => {
+    try {
+        const assets = await AssetItem.find()
+
+        if (!assets || assets.length === 0) {
+            return res.status(404).send({ error: "No Assets Found" })
+        }
+
+        return res.status(200).send({
+            message: "Assets Retrieved Successfully",
+            data: assets
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "Something went wrong",
+            error: error.message
+        })
+    }
+}

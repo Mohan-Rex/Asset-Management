@@ -60,3 +60,24 @@ export const deleteAssetModel = async (req, res) => {
     }
 };
 
+export const getAllAssetModels = async (req, res) => {
+    try {
+        let assetModels = await AssetModel.find();
+
+        if (assetModels && assetModels.length > 0) {
+            return res.status(200).send({
+                message: "All AssetModels fetched successfully",
+                data: assetModels
+            });
+        } else {
+            return res.status(404).send({
+                error: "No AssetModels found"
+            });
+        }
+    } catch (error) {
+        return res.status(500).send({
+            message: "Something went wrong",
+            error: error.message
+        });
+    }
+};
