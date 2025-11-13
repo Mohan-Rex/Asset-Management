@@ -72,7 +72,7 @@ export const deleteAssetItem = async (req, res) => {
 // Get All Assets
 export const getAllAssetItems = async (req, res) => {
     try {
-        const assets = await AssetItem.find()
+        const assets = await AssetItem.find().populate("model")
 
         if (!assets || assets.length === 0) {
             return res.status(404).send({ error: "No Assets Found" })
@@ -89,3 +89,4 @@ export const getAllAssetItems = async (req, res) => {
         })
     }
 }
+

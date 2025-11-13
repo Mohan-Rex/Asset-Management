@@ -14,7 +14,7 @@ assetItemRouter.put("/edit",verifyUser,checkRole(["super admin", "admin"]),editA
 
 assetItemRouter.delete("/delete",verifyUser,checkRole(["super admin", "admin"]),deleteAssetItem)
 
-assetItemRouter.get("/allassetitems",verifyUser,checkRole(["super admin", "admin"]),getAllAssetItems)
+assetItemRouter.get("/all",verifyUser,checkRole(["super admin", "admin"]),getAllAssetItems)
 
 
 
