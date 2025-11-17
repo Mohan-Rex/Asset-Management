@@ -135,7 +135,7 @@ export const getItemsOfTheModel = async (req, res) => {
 
         return res.status(200).send({
             message: "Items fetched successfully",
-            data: allItems
+            data: allItems[0]
         });
 
     } catch (error) {

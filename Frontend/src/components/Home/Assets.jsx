@@ -68,7 +68,7 @@ function Assets() {
   };
 
   const navigatetoShowitems = (id)=>{
-  navigate(`/asset-model/:${id}`)
+  navigate(`/asset-model/${id}`)
 }
 
   return (
