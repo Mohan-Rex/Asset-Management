@@ -1,8 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 function AllAssetItems() {
+    const {id}= useParams()
   return (
-    <div>AllAssetItems</div>
+    <div>{id}</div>
   )
 }
 

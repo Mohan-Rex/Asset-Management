@@ -43,8 +43,8 @@ export const editAssetModel = async (req, res) => {
 
 export const deleteAssetModel = async (req, res) => {
     try {
-         let { id } = req.query;
-        let assetItem = await AssetItem.findOne({model:id})
+        let { id } = req.query;
+        let assetItem = await AssetItem.findOne({ model: id })
 
         if (assetItem) {
             return res.status(400).send({ error: "Asset Items are present please delete all the asset Items" })
@@ -108,3 +108,40 @@ export const getAllAssetModelsWithItems = async (req, res) => {
         });
     }
 }
+
+import mongoose from "mongoose";
+
+export const getItemsOfTheModel = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!id) {
+            return res.status(400).send({ error: "Model Id is required" });
+        }
+
+        const allItems = await AssetModel.aggregate([
+            {
+                $match: { _id: new mongoose.Types.ObjectId(id) }
+            },
+            {
+                $lookup: {
+                    from: "assetitems",   // collection name
+                    localField: "_id",
+                    foreignField: "model",
+                    as: "items"
+                }
+            }
+        ]);
+
+        return res.status(200).send({
+            message: "Items fetched successfully",
+            data: allItems
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            message: "Something Went wrong",
+            error: error.message
+        });
+    }
+};
