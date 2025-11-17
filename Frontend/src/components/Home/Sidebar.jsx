@@ -12,7 +12,7 @@ let SidebarLinks = [
   },
 
   {
-    role: "super admin", links: [{ label: "Dashboard", path: "/" }, { label: "Admins", path: "/admins" }, { label: "My Assets", path: "/myAssets" },
+    role: "super admin", links: [{ label: "Dashboard", path: "/" }, { label: "Admins", path: "/admins" }, { label: "Assets", path: "/Assets" },
     { label: "Employees", path: "/employees" }, { label: "Assigned Assets", path: "/assigned-assets" }, { label: "Requests", path: "/requests" }]
   },
 

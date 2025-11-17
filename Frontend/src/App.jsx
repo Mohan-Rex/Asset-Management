@@ -1,39 +1,42 @@
 import React from 'react'
-import { Route,Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import ErrorPage from './pages/ErrorPage'
 import ProtectedRoute from './pages/ProtectedRoute'
 import Dashboard from './components/Home/Dashboard'
-import {Toaster} from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
 import Employees from './components/Home/Employees'
 import Admins from './components/Home/Admins'
+import Assets from './components/Home/Assets'
+import AllAssetItems from './components/Home/AllAssetItems'
 
 
 function App() {
   return (
-  <>
-  <Routes>
-    <Route path="/login" element={<Login/>}> </Route>
-     <Route path="/" element={
-      <ProtectedRoute>
-         <Home/>
-      </ProtectedRoute>
-     }>
-      <Route index element={<Dashboard/>}/>
-      <Route path="assets" element={<h1> Assets </h1>}></Route>
-       <Route path="admins" element={<Admins/>}></Route>
-        <Route path="myAssets" element={<h1> MyAsset </h1>}></Route>
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />}> </Route>
+        <Route path="/" element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }>
+          <Route index element={<Dashboard />} />
+          <Route path="assets" element={<Assets />}></Route>
+          <Route path="asset-model/:id" element={<AllAssetItems/>}></Route>
+          <Route path="admins" element={<Admins />}></Route>
+          <Route path="myAssets" element={<h1>MyAssets</h1>}></Route>
           <Route path="requests" element={<h1> Requests </h1>}></Route>
-             <Route path="profile" element={<h1> Profile </h1>}></Route>
-      <Route path="employees" element={<Employees/>}></Route>
-      <Route path="assigned-assets" element={<h1> Assigned Assets </h1>}></Route>
-     </Route>
-    
-    <Route path="*" element={<ErrorPage/>}></Route>
-  </Routes>
-  <Toaster position='top-right' ></Toaster>
-  </>
+          <Route path="profile" element={<h1> Profile </h1>}></Route>
+          <Route path="employees" element={<Employees />}></Route>
+          <Route path="assigned-assets" element={<h1> Assigned Assets </h1>}></Route>
+        </Route>
+
+        <Route path="*" element={<ErrorPage />}></Route>
+      </Routes>
+      <Toaster position='top-right' ></Toaster>
+    </>
   )
 }
 

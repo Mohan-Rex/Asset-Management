@@ -8,11 +8,11 @@ const Admins = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editAdmin, setEditAdmin] = useState({});
 
-  // ✅ Fetch Admins
+  //  Fetch Admins
   const fetchAdmins = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/v1/user/admins", // change this endpoint
+        "http://localhost:8000/api/v1/user/admins", 
         { withCredentials: true }
       );
       setAdmins(response.data);
